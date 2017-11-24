@@ -58,6 +58,7 @@ repeat until change in values is sufficently small {
     use maximal value of the list to update estimate of optimal value function
   } each state
 } convergence
+calculate optimal value frunction from Bellmans' Equation
 ```
 
 - Value iteration computes the optimal state value function by iteratively improving the estimate of `V(s)`
@@ -90,4 +91,13 @@ repeat until policy is stable {
 } policy
 ```
 
+- Policy iteration instead of repeated improving of the value-function estimate, it will re-define the policy at each step and compute the value according to this new policy until the policy converges.
+- Policy iteration is also guaranteed to converge to the optimal policy and it often takes less iterations to converge that the value-iteration algorithm.
+
 ___
+
+In **Policy iteration** algorithms, you start with a random policy, then find the value function of that policy *(policy evaluation step)*, then find a new *(improved)* policy based on the previous value function, and so on. In this process, each policy is guaranteed to be a strict improvement over the previous one *(unless it is already the optimal).*
+
+In **Value iteration** algorithms, you start with a random value function and then find a new *(improved)* value function in a iterative process, until reaching the optimal value function. Notice that you can derive easily the optimal policy from the value function by a simple `argmax` operation.
+
+*Policy iteration is generally faster than value iteration as policy converges more quickly than value function.*
